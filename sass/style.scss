@@ -1,0 +1,29 @@
+nav {
+  background: transparent;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .logo {
+    padding: 25px 2%;
+    display: inline-block;
+  }
+
+  .social {
+    padding: 25px 2%;
+    display: inline-block;
+    float: right;
+
+    a {
+      text-decoration: none;
+
+      i {
+          color: #464646;
+          padding-left: 10px;
+          font-size: 20px;
+          display: inline-block;
+      }
+    }
+  }
+}

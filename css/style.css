@@ -1,0 +1,20 @@
+nav {
+  background: transparent;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0; }
+  nav .logo {
+    padding: 25px 2%;
+    display: inline-block; }
+  nav .social {
+    padding: 25px 2%;
+    display: inline-block;
+    float: right; }
+    nav .social a {
+      text-decoration: none; }
+      nav .social a i {
+        color: #464646;
+        padding-left: 10px;
+        font-size: 20px;
+        display: inline-block; }
