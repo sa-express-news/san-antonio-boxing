@@ -27,3 +27,59 @@ nav {
     }
   }
 }
+
+header {
+  max-height: 100vh;
+  min-height: 70vh;
+  min-width: 100%;
+  overflow: hidden;
+  background: white;
+  margin: 0 auto;
+
+  .imageWrap
+}
+
+main {}
+
+        main: {
+            maxHeight: '90vh',
+            minHeight: '70vh',
+            minWidth: '100vw',
+            overflow: 'hidden',
+            background: 'white',
+        },
+        outerImageWrap: {
+            width: vw,
+            maxHeight: '90vh',
+            margin: '0 auto',
+            overflow: 'hidden',
+        },
+        innerImageWrap: {
+            display: 'inline-block',
+            position: 'relative',
+            right: '-50%',
+        },
+        image: {
+            height: 'auto',
+            minWidth: '100vw',
+            minHeight: '70vh',
+            position: 'relative',
+        left: '-50%',
+        },
+        overlayContentStyle: {
+            background: 'none',
+        },
+        cardTitle: {
+            padding: '4% 2%',
+        },
+        titleStyle: {
+            fontSize: vw < 500 ? '4em' : '4.5em',
+            lineHeight: '40px',
+            paddingBottom: '20px',
+            color: 'rgba(0, 0, 0, 0.9)'
+        },
+        subtitleStyle: {
+            fontSize: vw < 500 ? '1.2em' : '1.7em',
+            paddingRight: '20%',
+            color: 'rgba(0, 0, 0, 0.65)'
+        }
