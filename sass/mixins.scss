@@ -1,0 +1,23 @@
+@mixin breakpoint($point) {
+  @if $point == wide {
+    @media (min-width: 1080px) { @content; }
+  }
+  @else if $point == desktop {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 500px) { @content; }
+  }
+  @else if $point == mobile {
+    @media (max-width: 499px)  { @content; }
+  }
+}
+
+@mixin orientation($point) {
+  @if $point == landscape {
+    @media (orientation: landscape) { @content; }
+  }
+  @else if $point == portrait {
+    @media (orientation: portrait) { @content; }
+  }
+}
