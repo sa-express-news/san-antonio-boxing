@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Space+Mono");
+@import url("https://fonts.googleapis.com/css?family=Anton");
 body {
   font-family: arial, helvetica, sans-serif;
   margin: 0;
@@ -30,7 +30,7 @@ nav {
     nav .social a {
       text-decoration: none; }
       nav .social a i {
-        color: #464646;
+        color: #903;
         padding-left: 10px;
         font-size: 20px;
         display: inline-block; }
@@ -62,8 +62,8 @@ header {
     bottom: 20vh;
     left: 5%;
     text-align: left;
-    font-family: 'Space Mono', monospace;
-    text-transform: uppercase; }
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.2em; }
     @media (orientation: portrait) {
       header .title-box {
         bottom: 10vh; } }
@@ -94,7 +94,7 @@ main {
     margin: 15px auto 1.5em auto;
     width: 585px; }
     main p a {
-      color: #398cff;
+      color: #903;
       text-decoration: none; }
     @media (orientation: portrait) {
       main p {
