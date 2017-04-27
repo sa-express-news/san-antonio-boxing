@@ -58,10 +58,58 @@
 		},
 	};
 
+	function SplashAudio(header, audio) {
+		this.header 				 = header;
+		this.audio 					 = audio;
+		this.audio.isVisible = false;
+		this.fraction 	 		 = 0.8;
+		this.checkScroll 		 = this.checkScroll.bind(this);
+		this.init();
+	}
+
+	SplashAudio.prototype = {
+		init: function () {
+			this.checkScroll();
+			window.addEventListener('scroll', this.checkScroll, false);
+			window.addEventListener('resize', this.checkScroll, false);
+		},
+
+		checkScroll: function () {
+			var x 		 = this.header.offsetLeft,
+					y 		 = this.header.offsetTop,
+					width  = this.header.offsetWidth,
+					height = this.header.offsetHeight,
+					right  = x + width,
+					bottom = y + height,
+					visibleX, visibleY, amountVisible;
+
+			visibleX = Math.max(0, Math.min(width, window.pageXOffset + window.innerWidth - x, right - window.pageXOffset));
+			visibleY = Math.max(0, Math.min(height, window.pageYOffset + window.innerHeight - y, bottom - window.pageYOffset));
+
+			amountVisible = visibleX * visibleY / (width * height);
+
+			if (!this.header.isVisible && amountVisible > this.fraction) {
+				this.play();
+			} else if (amountVisible === 0) {
+				this.stop();
+			}
+		},
+
+		play: function () {
+			this.audio.play();
+			this.audio.isVisible = true;
+		},
+
+		stop: function () {
+			this.audio.pause();
+			this.audio.currentTime = 0;
+			this.audio.isVisible = false;
+		},
+	};
+
 	function SetNavBg(nav) {
 		this.nav = nav;
 		this.checkScroll = this.checkScroll.bind(this);
-		this.wasAtZero = this.isAtZero();
 		this.init();
 	}
 
@@ -71,14 +119,23 @@
 		},
 
 		init: function () {
+			this.initialCheck();
 			window.addEventListener('scroll', this.checkScroll, false);
 		},
 
+		initialCheck: function () {
+			this.wasAtZero = this.isAtZero();
+			if (!this.wasAtZero) {
+				this.nav.classList.remove('top');
+			}
+		},
+
 		checkScroll: function () {
-			var addOrRemove = this.getAddOrRemove();
-			if (this.isAtZero() !== this.wasAtZero) {
+			var addOrRemove = this.getAddOrRemove(),
+					isAtZero		= this.isAtZero();
+			if (isAtZero !== this.wasAtZero) {
 				this.nav.classList[addOrRemove]('top');
-				this.wasAtZero = this.isAtZero();
+				this.wasAtZero = isAtZero;
 			}
 		},
 
@@ -87,7 +144,8 @@
 		}
 	};
 
-	App.videoPlayer = new VideoPlayer(document.querySelectorAll(".play-on-scroll"));
+	// App.videoPlayer = new VideoPlayer(document.querySelectorAll(".play-on-scroll"));
+	App.splashAudio = new SplashAudio(document.querySelector("header"), document.querySelector("audio#splash-audio"));
 	App.setNavBg = new SetNavBg(document.getElementById('nav'))
 
 	return App;
